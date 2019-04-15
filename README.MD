@@ -1,6 +1,22 @@
-# Web site Log Listener - Dockerfile
+# Big Data - Log Listener - Dockerfile
 
-Advanced Networking with PHP & MySQL with json file.
+Advanced Networking with PHP & MySQL. Explode big data with sql logs tables. Search it easy.
+
+
+### Run the demo
+
+```
+docker-compose up -d
+```
+
+Visiting `http://localhost:8080` or `local_ip:8080`
+
+
+### To destroy the setup
+
+```
+docker-compose down
+```
 
 ### Create our database Dockerfile in ./db
 
@@ -81,22 +97,6 @@ services:
       - log-listener-db
     env_file:
       - ./development.env
-```
-
-
-### Run the demo
-
-```
-docker-compose up -d
-```
-
-Visiting `http://localhost:8080` or `local_ip:8080`
-
-
-### To destroy the setup
-
-```
-docker-compose down
 ```
 
 ### Resources
