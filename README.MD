@@ -1,6 +1,6 @@
-# Docker Log Listener
+# Web site Log Listener - Dockerfile
 
-Web site Log Listener - Advanced Networking with PHP & MySQL
+Advanced Networking with PHP & MySQL
 
 ### Create our database Dockerfile in ./db
 
@@ -84,7 +84,7 @@ services:
 ```
 
 
-### Start the containers, networks and volumes
+### Run the demo
 
 ```
 docker-compose up -d
