@@ -1,0 +1,44 @@
+version: "3"
+
+networks:
+  log-listener-frontend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.10.1.0/24
+  log-listener-backend:
+    driver: bridge
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.10.2.0/23
+
+services:
+  log-listener-db:
+    build: ./db
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    networks:
+      log-listener-backend:
+        ipv4_address: 172.10.3.2
+    env_file:
+      - ./development.env
+      
+  log-listener-www:
+    build: ./www
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html/
+    networks:
+      log-listener-backend:
+        ipv4_address: 172.10.2.2
+      log-listener-frontend:
+        ipv4_address: 172.10.1.2
+    depends_on:
+      - log-listener-db
+    env_file:
+      - ./development.env
+      
